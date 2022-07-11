@@ -7,7 +7,6 @@
   "scripts": {
     "start": "node index.js",
     "test:integration": "npx jest -c jest.config.integration.js",
-    "sonar:setup": "docker pull lts-comunity",
     "sonar:analysis": "node sonarqube.js"
   },
   "devDependencies": {
@@ -16,7 +15,6 @@
     "@jest-mock/express": "^1.4.5",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "3.0.2",
-    "husky": "^4.2.5",
     "jest": "^26.0.1",
     "lint-staged": "^9.5.0",
     "mock-express-request": "^0.2.2",

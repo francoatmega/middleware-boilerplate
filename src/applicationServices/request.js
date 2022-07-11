@@ -12,5 +12,9 @@ const _request = async (config, maxRetry, attempt = 0) => {
 
 exports.request = (config) => {
   const maxRetry = process.env.RETRY_REQUEST || 3
-  return _request(config, maxRetry)
+  const newConfig = {
+    ...config,
+    validateStatus: (status) => status >= 200 && status < 500
+  }
+  return _request(newConfig, maxRetry)
 }

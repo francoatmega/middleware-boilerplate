@@ -4,7 +4,7 @@ const path = require('path')
 const parseObject = (list, dir) => list.reduce((acc, value) => {
   const obj = fs.readdirSync(`${dir}/${value}`)
   obj.map(a => acc.push({ object: a, root: `${value}`, dir: `${dir}/${value}/${a}` }))
-  acc = acc.filter(a => a.object !== 'case.js')
+  acc = acc.filter(a => a.object !== 'validation.js')
   return acc
 }, [])
 

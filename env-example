@@ -1,3 +1,6 @@
 PORT= "3000"
 BASE_URL = "your-domain.atlassian.net"
 AUTHORIZATION = "YOUR_AUTHORIZATION_TOKEN"
+
+SONARQUBE_PROJECT_KEY="squ_d8373763fdf677ff5c69ecf22b7b4ba61bba969e"
+SONARQUBE_URL="http://localhost:3000"
