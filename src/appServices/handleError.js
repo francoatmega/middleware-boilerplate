@@ -42,10 +42,3 @@ exports.cleanBodyRequest = (object, ...body) => returnObject => {
     return returnObject
   })
 }
-
-exports.parseResponseError = (error) => {
-  return {
-    status: error?.response?.status ?? 500,
-    data: error?.response?.data ?? { title: 'Error', error: 'Internal Server Error' }
-  }
-}

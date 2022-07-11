@@ -8,12 +8,6 @@ const parseObject = (list, dir) => list.reduce((acc, value) => {
   return acc
 }, [])
 
-/**
- * @function
- * @description Função feita para ordenação de rotas com e sem parâmetro.
- * @param  {Array} list
- * @return {Array}
- */
 const orderByExpressRoutes = (list) => {
   const params = []
   const notParams = []

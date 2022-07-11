@@ -1,16 +1,16 @@
-const requestHandler = require('../presenters/request')
+const requestHandler = require('../../appServices/request')
 const incommingParse = require('./incommingParse')
 const outcomeParse = require('./outcomeParse')
 
-module.exports = async (data) => {
+module.exports = async (enviroment, data) => {
   const userId = incommingParse(data)
-  var requestConfig = {
+  const requestConfig = {
     method: 'get',
-    url: `https://${process.env.BASE_URL}/user/${userId}`,
+    url: `${enviroment.BASE_URL}/${userId}`,
     headers: {
-      Authorization: `Basic ${process.env.AUTHORIZATION}`
+      Authorization: `Basic ${enviroment.AUTHORIZATION}`
     }
   }
   const response = await requestHandler.request(requestConfig)
-  return outcomeParse(response)
+  return outcomeParse(response.data)
 }

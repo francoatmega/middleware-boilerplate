@@ -17,7 +17,7 @@ app.use(compression())
 app.use(helmet())
 app.disable('x-powered-by')
 
-require('./src/presenters/routes')(app)
+require('./src/appServices/routes')(app)
 
 app.use((_, res) => res.status(404).json({ error: [{ title: '404', message: 'Route not found' }] }))
 

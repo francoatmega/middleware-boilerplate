@@ -1,21 +1,22 @@
+const { validatePermission } = require('../../appServices/authentication')
+const { validateErrorBody } = require('../../appServices/handleError')
+const { validateUserId } = require('./validation')
+const { getEnviroment } = require('../../appServices/enviroment')
 const getUser = require('../../services/getUser')
-const { validatePermission } = require('../../presenters/authentication')
-const { validateErrorBody, parseResponseError } = require('../../presenters/handle')
-const { validateUserId } = require('./case')
 
 exports.path = '/user/:userId'
 exports.method = 'get'
 exports.middleware = [validatePermission, validateUserId, validateErrorBody]
 
-exports.handler = async (req, res) => {
+exports.handler = async (req, res, next) => {
   try {
-    const response = await getUser(req.params.userId)
+    const enviroment = getEnviroment(req.query.enviroment)
+    const response = await getUser(enviroment, req.params.userId)
     if (response.status === 404) {
       return res.status(204).json({ message: 'User not found!' })
     }
     return res.status(response.status).json(response.data)
   } catch (err) {
-    const { status, data } = parseResponseError(err)
-    return res.status(status).json(data)
+    next(err)
   }
 }
