@@ -1,6 +1,6 @@
 const app = require('../../../app')
 const supertest = require('supertest')
-const requestHandler = require('../../../src/presenters/request')
+const requestHandler = require('../../../src/appServices/request')
 const req = supertest(app)
 
 beforeAll(async () => {
@@ -13,14 +13,14 @@ describe('Test getOne user route', () => {
       return {
         status: 200,
         data: {
-          userName: 'Jardel Matias',
+          userId: 123,
           userEmail: 'jardelmatias@live.com'
         }
       }
     })
-    const res = await req.get('/middleware/api/user/:userId').set('Authorization', `Bearer ${process.env.API_SECRET}`)
+    const res = await req.get('/middleware/api/user/1').set('Authorization', `Bearer ${process.env.API_SECRET}`)
     expect(res.body).toEqual({
-      userName: 'Jardel Matias',
+      userId: 123,
       userEmail: 'jardelmatias@live.com'
     })
   })
