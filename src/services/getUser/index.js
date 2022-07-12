@@ -12,5 +12,5 @@ module.exports = async (enviroment, data) => {
     }
   }
   const response = await requestHandler.request(requestConfig)
-  return outcomeParse(response.data)
+  return outcomeParse(response)
 }
