@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node index.js",
     "test:integration": "npx jest -c jest.config.integration.js",
-    "sonar:analysis": "node sonarqube.js"
+    "sonar:analysis": "node sonarqube.js",
+    "fix": "npx standard --fix",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
@@ -21,7 +23,8 @@
     "mock-express-response": "^0.3.0",
     "sonarqube-scanner": "^2.8.1",
     "standard": "^14.3.1",
-    "supertest": "^6.1.6"
+    "supertest": "^6.1.6",
+    "husky": "^8.0.0"
   },
   "config": {
     "commitizen": {
